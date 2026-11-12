@@ -48,6 +48,11 @@ LANGUAGE ~English~
          ~DeadGardens/Languages/english/JournalEntries.tra~
          ~DeadGardens/Languages/english/setup.tra~ //you'd put the mod title in here.
 
+LANGUAGE ~Schinese~
+         ~schinese~   
+         ~DeadGardens/Languages/schinese/JournalEntries.tra~
+         ~DeadGardens/Languages/schinese/setup.tra~
+		 
 BEGIN @1 /* Dead Gardens */
 DESIGNATED 0
 LABEL ~Dead_Gardens-Glittergear~
