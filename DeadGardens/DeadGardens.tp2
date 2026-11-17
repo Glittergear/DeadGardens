@@ -24,7 +24,7 @@ ALWAYS
                 infer_charsets = 1
                 from_utf8 = 1
             STR_VAR
-                tra_path = EVAL ~%MOD_FOLDER%/tra~
+                tra_path = EVAL ~%MOD_FOLDER%/Languages~
                 noconvert_array = DeadGardens_noconvert
                 reload_array = DeadGardens_reload
         END
