@@ -15,28 +15,20 @@ ALWAYS
 
     LAF autotra_workaround END
 
-// Convert tra files in UTF8 if EE and let them in ANSI if oBG
-
-	ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
-//  ACTION_DEFINE_ARRAY DeadGardens_noconvert BEGIN install END
-
-		ACTION_DEFINE_ARRAY DeadGardens_reload BEGIN setup JournalEntries END
-
-			LAF HANDLE_CHARSETS
-				INT_VAR
-				infer_charsets = 1
-				STR_VAR
-				tra_path = EVAL ~weidu_external/DeadGardens/Languages/autotra~
-				out_path = EVAL ~weidu_external/DeadGardens/Languages/autotra/UTF8~
-				iconv_path = ~DeadGardens/Languages/autotra/iconv~
-//				 noconvert_array = DeadGardens_noconvert
-				reload_array = DeadGardens_reload
-			END
-
-	// UTF8 only
-	COPY ~weidu_external/DeadGardens/Languages/autotra/UTF8/%LANGUAGE%~				~weidu_external/DeadGardens/Languages/autotra/%LANGUAGE%~
-	END
-
+	// Convert tra files for classic games
+    ACTION_IF NOT GAME_IS ~bg2ee eet~ BEGIN
+        ACTION_DEFINE_ARRAY DeadGardens_noconvert BEGIN setup END
+        ACTION_DEFINE_ARRAY DeadGardens_reload BEGIN JournalEntries END
+        LAF HANDLE_CHARSETS
+            INT_VAR
+                infer_charsets = 1
+                from_utf8 = 1
+            STR_VAR
+                tra_path = EVAL ~%MOD_FOLDER%/Languages~
+                noconvert_array = DeadGardens_noconvert
+                reload_array = DeadGardens_reload
+        END
+    END
 END
 
 
@@ -47,6 +39,11 @@ LANGUAGE ~English~
          ~english~   
          ~DeadGardens/Languages/english/JournalEntries.tra~
          ~DeadGardens/Languages/english/setup.tra~ //you'd put the mod title in here.
+
+LANGUAGE ~Simplified Chinese~
+         ~schinese~   
+         ~DeadGardens/Languages/schinese/JournalEntries.tra~
+         ~DeadGardens/Languages/schinese/setup.tra~ //you'd put the mod title in here.
 
 BEGIN @1 /* Dead Gardens */
 DESIGNATED 0
